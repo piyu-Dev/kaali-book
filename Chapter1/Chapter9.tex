@@ -3,15 +3,18 @@
 \noindent
 \rule{0.49\textwidth}{0.75pt} $_{\bigcirc}$ \rule{0.49\textwidth}{0.75pt}\\
 \section{Conclusions}
-TrustChain offers a viable solution to safe identity verification by avoiding the process of exchanging uncoded personal data. The system allows users to be in total control of their identity and the institutions to do verification using proof based mechanisms. This minimizes the risks involved in exposing and abusing data.
+This project developed and evaluated DAVS, a secure, communication-efficient, and audit-ready federated learning framework designed for privacy-sensitive medical imaging environments. The system enables distributed hospital clients to collaboratively train a deep learning model without sharing raw patient data, while addressing the critical challenges of non-IID data heterogeneity, Byzantine poisoning attacks, and the lack of training auditability in conventional federated architectures.
 
-Decentralized technologies like blockchain and IPFS provide the necessary transparency, immutability and reliability in identity management. Zero Knowledge Proofs help to enhance privacy by authenticating values without providing sensitive information. This is in line with the current security and data protection needs.
+The completed framework integrates the following components into a unified operational pipeline:
+\begin{itemize}
+    \item Non-IID data partitioning and baseline FedAvg training, establishing that the model converges reliably in a standard federated setting.
+    \item Random Projection-based gradient sketching, compressing high-dimensional model updates into compact sketches, significantly reducing per-round bandwidth while preserving similarity structure for trust evaluation.
+    \item Data-Aware Verifier Selection (DAVS), an amnesic scoring mechanism that ranks clients using current-round directional alignment (cosine similarity) and magnitude consistency to form a robust validation committee.
+    \item PBFT-inspired consensus validation, ensuring that the global model is updated only upon achieving a quorum of validator approvals and rejecting compromised updates.
+    \item Permissioned blockchain audit logging, recording per-round scores, committee decisions, vote logs, model hashes, and metrics to provide tamper-proof training provenance.
+\end{itemize}
 
-The system also initiates user controlled access management where the permissions could be granted or denied any time. Guardian based recovery can further increase reliability and guardian based recovery can guarantee continuity in case of key loss. This renders the platform to be secure and user friendly.
-
-TrustChain, in general, exhibits a scalable and effective identity verification solution in the real world. It effectively changes the paradigm of sharing data to proving based validation, suitable in its adoption in various fields that need identity management.
-
-It lays a robust basis of trust in online communications without invading users privacy. The strategy is in line with the new global requirements of decentralized identity systems. It also shows how cryptographic techniques can be applied in resolving real world security issues. It makes TrustChain a visionary solution in the changing world of digital identity management.
+Experimental evaluation under multiple poisoning strategies demonstrated that DAVS sustains accuracy close to the clean baseline while significantly outperforming undefended federated learning under attack, and it simultaneously provides immutable, verifiable provenance of the full training lifecycle.
 \noindent
 \begin{center}
 \rule{0.45\textwidth}{0.75pt} \; $\bigcirc$ \; \rule{0.45\textwidth}{0.75pt}
@@ -22,12 +25,12 @@ It lays a robust basis of trust in online communications without invading users 
 
 
 \section{Future Scope}
-TrustChain may be expanded by means of connecting with official government databases like UIDAI and ITD to enhance the validity of document authentications. This would facilitate the real time validation of credentials and will increase trust into the system in the institutional use cases. 
-
-In addition, enhanced recovery features like managed wallets and encrypted backups may be included. These upgrades will make them easier to use and less reliant on manual recovery processes and also enhance security.
-
-Other technologies that can be integrated into the system include computer vision to verify documents automatically and extract data. This would assist in authenticating the authenticity of uploaded credentials and lessen reliance on third-party verification measures.
-
-Moreover, large scale deployment can be investigated with scalability and performance optimizations. Increasing interoperability with the current digital identity platforms, as well as raising the user experience, will also contribute to the adoption of TrustChain in practical use.
+With the core framework implemented and validated, the following directions represent natural extensions for future research and deployment:
+\begin{enumerate}
+    \item Extending the framework to larger model architectures (e.g., ResNets and Vision Transformers) and evaluating on diverse clinical datasets to validate generalizability across healthcare scenarios.
+    \item Integrating formal differential privacy guarantees into the sketching layer to provide mathematically provable privacy bounds in addition to the obfuscation offered by random projection.
+    \item Optimizing the consensus and audit layers for deployment on resource-constrained edge environments and improving throughput under larger client populations.
+    \item Investigating robustness under colluding adversaries and more sophisticated adaptive attack strategies, including coordinated poisoning and dynamic participation patterns.
+\end{enumerate}
 
 

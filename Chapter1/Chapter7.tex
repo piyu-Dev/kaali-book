@@ -2,13 +2,11 @@
 \chapter[Testing]{Testing}{Testing}\label{Test}
 \noindent
 \rule{0.49\textwidth}{0.75pt} $_{\bigcirc}$ \rule{0.49\textwidth}{0.75pt}\\
-In Trustchain testing is essential to making sure that the system works safely, reliably and as expected by all parts. Given the sensitivity of identity verification by the platform, extensive testing is necessary to confirm data integrity, access control mechanisms and general system behavior. The aim of the testing process is to detect problems in the initial stages and verify that each module is functioning properly in various conditions.
+In DAVS, testing is essential to ensure the secure federated learning workflow behaves reliably under benign and adversarial conditions. Given the sensitivity of medical AI collaboration, the testing process focuses on verifying correctness of the training pipeline, stability of gradient sketching, robustness of committee selection, correctness of PBFT-inspired validation, and integrity of the blockchain audit trail.
 
-Tests are done at various levels such as frontend, backend and blockchain interactions. Functional testing is conducted to test user flows like registration, document upload, verification requests and access control. Integration testing is the method that promotes the seamless interaction of the parts, such as React frontend, Node.js backend, IPFS storage and smart contracts that are stored on the blockchain.
+Tests are performed across the end-to-end pipeline: client-side local training and update generation, Random Projection sketching and communication, DAVS scoring and committee selection, consensus voting and update acceptance/rejection, and audit logging of round metadata. Integration testing ensures that coordinator, validators, and ledger components remain consistent under different client participation and attacker ratios.
 
-Automated testing of user interface workflows, end to end scenarios are done through the katalon studio. It assists in authentication of user behaviors, form submissions and system replies. Postman is widely applicable in API testing where API endpoints are given tests to determine their ability to handle requests accurately with errors and thus reliably communicate between the components of the system.
-
-As well, there is testing of cryptographic algorithms like hashing and proof verification. Testing of smart contracts is done to verify proper implementation of access control and verification logic. This holistic solution assures TrustChain of security, performance and reliability in real world deployment scenarios.
+In addition, adversarial testing is carried out using multiple poisoning strategies (e.g., label flip, gradient flip, Gaussian noise injection, model scaling, and backdoor triggers). These tests validate that DAVS excludes malicious clients from the validator committee and that global model integrity is preserved through consensus and immutable logging.
 \\
 \noindent
 
@@ -38,31 +36,31 @@ As well, there is testing of cryptographic algorithms like hashing and proof ver
 \hline
 \endlastfoot
 
-TC01 & Wallet Connection & Validate wallet connection and role selection & 1. Click connect wallet 2. Select role & Wallet connects and role selected. \\
+TC01 & Client Join & Validate client participation in a round & 1. Start client 2. Register with coordinator & Client joins and receives global model. \\
 \hline
-TC02 & User Registration & Validate user registration with details & 1. Enter name email guardians 2. Submit form & User registered successfully. \\
+TC02 & Local Training & Validate local epochs and update creation & 1. Train for \(E\) epochs 2. Compute \(\Delta w_i\) & Local update computed correctly. \\
 \hline
-TC03 & User Login & Validate login using wallet authentication & 1. Click login 2. Authenticate wallet & User logged in dashboard displayed. \\
+TC03 & Sketching & Validate Random Projection sketch generation & 1. Apply \(s_i = R \cdot \Delta w_i\) 2. Check dimension & Sketch dimension correct and finite. \\
 \hline
-TC04 & Add Credential & Validate adding new credential & 1. Enter details 2. Upload document & Credential added successfully. \\
+TC04 & Transmission & Validate sketch transmission to coordinator & 1. Send sketch 2. Receive ACK/log & Coordinator receives sketch reliably. \\
 \hline
-TC05 & IPFS Storage & Validate document storage on IPFS & 1. Upload document 2. Submit data & Document stored hash generated. \\
+TC05 & DAVS Scoring & Validate score computation and ranking & 1. Compute cosine similarities 2. Rank clients & Scores computed and ranked correctly. \\
 \hline
-TC06 & Hash Generation & Validate credential hash generation & 1. Upload credential 2. Process hashing & Secure hash generated successfully. \\
+TC06 & Committee Selection & Validate top-\(k\) committee formation & 1. Select top-\(k\) by score 2. Output committee & Committee generated; outliers excluded. \\
 \hline
-TC07 & View Credentials & Validate viewing stored credentials & 1. Open credentials 2. View list & All credentials displayed correctly. \\
+TC07 & PBFT Prepare & Validate validator update checks & 1. Check NaN/Inf 2. Check norms/thresholds & Validators produce consistent votes. \\
 \hline
-TC08 & Request Handling & Validate receiving verification requests & 1. Open sharing tab 2. View requests & Requester and hashes displayed. \\
+TC08 & PBFT Commit & Validate quorum-based acceptance & 1. Collect votes 2. Apply quorum rule & Update accepted/rejected correctly. \\
 \hline
-TC09 & Grant Access & Validate granting access to hash & 1. Select request 2. Click grant & Access granted successfully recorded. \\
+TC09 & Model Hashing & Validate global model hash generation & 1. Hash aggregated model 2. Compare logs & Hash deterministic and recorded. \\
 \hline
-TC10 & Revoke Access & Validate revoking granted access & 1. Select request 2. Click revoke & Access revoked successfully updated. \\
+TC10 & Ledger Append & Validate blockchain audit write & 1. Append block 2. Verify link/hash chain & Block written; chain remains valid. \\
 \hline
-TC11 & Role Selection & Validate switching user roles & 1. Select role 2. Confirm action & Interface updates based on role. \\
+TC11 & Attack Scenario & Validate resilience under poisoning & 1. Inject malicious clients 2. Run rounds & Accuracy degrades gracefully; attacks mitigated. \\
 \hline
-TC12 & Data Privacy & Validate no raw document exposure & 1. Share credential 2. Verify output & Only hash shared not document. \\
+TC12 & Privacy Guarantee & Validate no raw data leakage & 1. Inspect network payloads 2. Confirm only sketches/metrics & No raw images/labels transmitted. \\
 \hline
-TC13 & Smart Contract & Validate blockchain transaction execution & 1. Perform action 2. Confirm transaction & Transaction recorded on blockchain. \\
+TC13 & Audit Integrity & Validate tamper-evidence of logs & 1. Verify hash chain 2. Detect modification & Tampering detected via hash mismatch. \\
 \hline
 \end{longtable}
 

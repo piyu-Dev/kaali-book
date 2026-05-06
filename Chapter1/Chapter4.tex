@@ -10,33 +10,23 @@
 \section{Feasibility Study}
 
 \subsection{Technical Feasibility}
-TrustChain has a high technical feasibility with well established and widely adopted technologies used in the frontend and backend layers. The frontend will be constructed in HTML5, CSS3 and React.js which will provide a responsive and easy to use interface to register, access and manage the dashboard. It can be integrated with Web3.js or Ethers.js to allow the user interface to interact with blockchain smart contracts easily. This will provide a smooth communication and real time updates of identity verification workflows within the system.
+DAVS has a high technical feasibility because it is composed of well-established building blocks from federated learning, distributed systems, and blockchain-based audit logging. The federated training pipeline can be implemented using standard deep learning frameworks, with hospitals acting as clients that perform local training and transmit model updates to a coordinator. Random Projection-based gradient sketching is computationally lightweight and relies on efficient linear algebra operations while providing substantial communication savings.
 
-On the backend, there is the use of Node.js and Express.js that deal with the server side operations, API management and communication between the various parts of the system. IPFS integration (Pinata) is a way to achieve the decentralization of identity documents storage which enhances their availability and fault tolerance. Decentralized identifiers, access control and verification logic are implemented in Solidity based smart contracts running on the blockchain layer with Ethereum. Metamask and WalletConnect are embedded tools to facilitate secure wallet authentication and to interact with the blockchain network effectively.
-
-The system also includes cutting edge cryptographic and identity systems like Self Sovereign Identity and ZK STARK based verification. These technologies provide the identity validation to be done without exposing sensitive information and retain the integrity of proofs with the help of KECCAK 256 hashing. This combination is what results in the system being technically sound and in line with the current standards of security.
-
-Design wise, TrustChain adheres to the human centered design principles to make it user-friendly and easily accessible. The user flow remains minimal and has a straightforward onboarding, upload and access document management. This makes it possible to have even the non technical users to interact with the system effectively without having to jeopardize security or functionality of the system. The interface is to be as user friendly as possible and yet easy to understand every step of the process. This enhances the general usability and promotes usage by a broader group of users.
+The Data-Aware Verifier Selection (DAVS) stage operates on low-dimensional sketches and uses cosine similarity and magnitude consistency to select a representative committee each round. This selection is amnesic (round-local) and avoids the complexity and vulnerability of maintaining long-term reputation histories. The PBFT-inspired validation layer leverages known Byzantine fault-tolerant consensus principles with deterministic update checks and quorum voting. Finally, a permissioned blockchain audit layer can be implemented as a lightweight ledger that stores round metadata and hashes (rather than bulky artifacts), making the solution practical for institutional deployments.
 \subsection{Operational Feasibility}
 
-The operational feasibility of TrustChain revolves around how it is able to operate in real world identity verification situations. The system will act in tandem with the other pre-existing systems like the government systems and telecommunication systems. It will act as a verification layer of middle ground to allow smooth adoption and not necessitate a total overhaul of existing systems and workflows. It minimizes reliance on manual verification processes within the departments. This aids in quick processing and delivery of services. The system can be incorporated without impairing the current workflows.
+The operational feasibility of DAVS is strong in the context of collaborative medical AI. Hospitals can participate as federated clients, training on-premise data while transmitting only compressed sketches and receiving global model updates. Communication efficiency improves round latency and makes multi-site training more deployable in bandwidth-constrained settings.
 
-The interaction process is easy and arranged to ensure users can register, upload documents and access them without being complicated. Features such as guardian based recovery and controlled access ensure reliability in case of user errors or access issues. The system reduces repetition of data entry that enhances efficiency and minimizes overhead costs of operation by the users and requesting entities. The users can simply know and manage their data sharing preferences. This enhances confidence and minimizes misunderstandings when verifying. The platform provides uniform experience to various uses.
-
-Institutionally, TrustChain lessens the burden of managing sensitive identities information through offering proof based verification. Raw documents are not sent to organizations but only validation results making it easier to comply and less risky. Smart contracts provide automation of access control and keep transparent a log of all activities on the blockchain. It also minimizes the chances of data duplication and inconsistencies. The automation of logs enhances operations traceability and auditability. This enhances accountability in organizations that use the system.
-
-The system is also scalable in terms of operations, taking advantage of the use of decentralized storage and blockchain infrastructure. It provides uniform performance without any centralized bottlenecks. This renders TrustChain to be applicable in the implementation in various industries that need secure and effective identity checking. Its decentralized structure allows high availability when it is being used to the fullest. It mitigates risks that are caused by centralization system failures. This ensures uninterrupted access and reliable verification services.
+From a security and governance perspective, DAVS improves operational reliability by excluding abnormal updates before consensus and by validating global updates through committee voting. The permissioned blockchain audit layer provides immutable provenance: per-round committee selection, PBFT votes, model hashes, and metrics can be audited for forensic investigation and compliance-driven reporting, addressing a major gap in conventional FL workflows.
 \subsection{Economic Feasibility}
-Decentralized infrastructure and use of open source technologies can support the economic viability of TrustChain. It eliminates the cost of having costly centralized storage and data management systems. This reduces first development cost and guarantees scalability and durability.
+DAVS is economically feasible because it reduces recurring costs related to communication-heavy training and to failures caused by poisoned updates. Random Projection-based sketching reduces bandwidth per client per round, accelerating experimentation cycles and lowering network overhead. Compared to cryptography-heavy defenses, DAVS introduces low additional computation while providing robust filtering against malicious updates.
 
-The system lowers the cost of operation by decreasing the number of times of identity verification and the number of times of handling sensitive documents manually. Organizations do not have to invest much in secure storage infrastructure because data is stored in IPFS. Verification and access control are automated by the use of blockchain smart contracts, cutting down on administrative overhead. Moreover, integration with the existing systems will not incur the expense of replacement of the entire infrastructure and the solution is thus cost effective to adopt.
-
-In the long term, TrustChain will help to minimize financial losses related to identity fraud and data breaches. It reduces the risks that identity data can be misused by making sure that the verification is secure and privacy preserving. The scalable architecture is also economically viable as it minimizes maintenance costs in the long run and can be deployed in large scalable manner across sectors.
+The permissioned blockchain audit layer stores lightweight metadata and hashes, keeping storage costs manageable. In the long term, preventing compromised models and enabling verifiable provenance can reduce financial and reputational risk associated with unsafe clinical AI deployments and compliance shortcomings.
 
 
 \section{Project Management}
 \subsection{Timeline Chart}
-Below are the key milestones for the TrustChain project, along with an estimated timeline based on standard software development cycles and the methodologies described in our research paper.
+Below are the key milestones for the DAVS project, aligned with the design, implementation, and evaluation pipeline described in this report.
 
 \begin{table}[h!]
 \centering
@@ -44,28 +34,28 @@ Below are the key milestones for the TrustChain project, along with an estimated
 \hline
 \textbf{Milestone} & \textbf{Description} & \textbf{Estimated Completion Date} \\
 \hline
-Project Initiation \& Planning & Define project scope, create team, collect requirements & August, 2025 \\
+Project Initiation \& Planning & Define scope, datasets, threat model, and evaluation plan & August, 2025 \\
 \hline
-System Design \& Architecture & Design system layers, identity flow and identity access control & September, 2025 \\
+System Design \& Architecture & Define FL pipeline, sketching, DAVS selection, consensus, and audit logging & September, 2025 \\
 \hline
-Frontend \& Backend Development & Develop user interface, backend APIs and integrate wallet authentication & November, 2025 \\
+Federated Learning Baseline & Implement baseline FedAvg training and non-IID partitioning & November, 2025 \\
 \hline
-IPFS \& Hashing Implementation & Deploy a multi layer hashing and decentralized storage & December, 2025 \\
+Gradient Sketching Layer & Implement Random Projection compression and validate similarity preservation & December, 2025 \\
 \hline
-Blockchain \& Contract Development & Write smart contracts to check identity and access control & January, 2026 \\
+DAVS Committee Selection & Implement amnesic scoring and committee formation logic & January, 2026 \\
 \hline
-Testing \& Validation & Conduct functional, security and performance testing of the system & February, 2026 \\
+PBFT Validation \& Audit Ledger & Integrate PBFT-inspired validation and permissioned blockchain logging & February, 2026 \\
 \hline
-User Feedback \& Iteration & Collect feedback and improve usability and system flow & March, 2026 \\
+Attack Evaluation \& Benchmarking & Test poisoning attacks and compare against baselines & March, 2026 \\
 \hline
-Deployment \& Integration & Deploy system and test integration to real world use cases & March, 2026 \\
+Result Analysis \& Reporting & Consolidate results, tables, and discussion & March, 2026 \\
 \hline
 Final Review \& Documentation & Complete documentation and finalize project report & April, 2026 \\
 \hline
 Conference Presentation & Write research paper and present at ICTIS conference. & April, 2026 \\
 \hline
 \end{tabular}
-\caption{TrustChain Project Milestones and Timeline}
+\caption{DAVS Project Milestones and Timeline}
 \end{table}
 
 \\ 
@@ -74,33 +64,33 @@ Conference Presentation & Write research paper and present at ICTIS conference. 
 \section{Project Resources}
 
 \subsection{Hardware Requirements}
-TrustChain hardware requirements are specified by the necessity to develop, deploy and ensure identity verification in case of different user roles like developers, users and requesting entities. These requirements guarantee the best performance, system responsiveness and safe use of the platform.
+DAVS hardware requirements are driven by federated training workloads, local client training, and the overhead of validation and audit logging. These requirements ensure efficient experimentation and reliable execution of the end-to-end pipeline.
 
-1. Development and Hosting Server Requirements
+1. Development and Coordinator/Validator Server Requirements
 Processor: Intel Core i7 (or equivalent AMD Ryzen 7) – 8th Gen or higher
 
-RAM: Minimum 16 GB (Recommended: 32 GB for for handling blockchain and cryptographic operations)
+RAM: Minimum 16 GB (Recommended: 32 GB for handling training orchestration, logging, and evaluation)
 
-Storage: 1 TB SSD (Solid State Drive) for faster data access and efficient IPFS integration
+Storage: 1 TB SSD for dataset access, model checkpoints, and audit logs
 
-GPU (Optional): Not mandatory, as no heavy machine learning training is involved
+GPU (Recommended): NVIDIA GPU (8--16 GB VRAM) for medical imaging model training
 
 Internet: High speed broadband with upload/download speeds of at least 100 Mbps
 
 Power Backup: UPS or generator backup to ensure continuous uptime during outages
 
-2. Client Side (Users and Requesters)
+2. Client Side (Hospital Training Nodes)
 Processor: Intel Core i3 or higher
 
 RAM: Minimum 4 GB (Recommended: 8 GB for smoother performance)
 
 Storage: 250 GB HDD or SSD
 
-Compatibility with Devices: compatible with laptops, smartphones, tablets and desktops.
+Compatibility with Devices: laptops/desktops/servers capable of local training
 
 Display: Minimum resolution of 1366 x 768 pixels
 
-Internet: Stable internet connection with 10 Mbps speed for seamless interaction and verification processes
+Internet: Stable connection (10 Mbps or higher) for transmitting sketches and receiving global models
 
 
 
@@ -114,23 +104,17 @@ Windows 10/11, Android 8.0+, iOS 13+, or any other operating system with a curre
 
 2. Frontend Technologies\\
 Language: HTML5, CSS3, JavaScript
-Framework: React.js (v18) – to create responsive and dynamic user interfaces.
-Styling Libraries: Tailwind CSS or Bootstrap (to have a consistent UI design.)
+Framework: (Optional) lightweight monitoring interface for rounds and metrics.
 
-3. Backend Technologies\\
-Runtime Environment: Node.js (v16 or above) to scale on server side.
-Framework: Express.js (v4.17.1) to route HTTP requests and API.
-Decentralized Storage: IPFS with Pinata integration for storing identity documents.
+3. Training \& Orchestration Stack\\
+Runtime Environment: Python 3.x with ML libraries.
+Frameworks/Libraries: PyTorch, NumPy; utilities for FL orchestration and evaluation.
 
-4. Blockchain Layer\\
-Platform: Ethereum Network ( OP Sepolia Testnet to deploy and test)
-Smart Contract Language: Solidity to verify identity and access control logic.
-Wallet Integration: Metamask or WalletConnect to sign a transaction and authenticate.
+4. Blockchain Audit Layer\\
+Platform: Permissioned blockchain / custom ledger implementation for immutable round logging.
 
-5. Identity Layer \& Cryptography\\
-Framework: Self Sovereign Identity to decentralized identifiers and verifiable credentials.
-Mechanism Proof: ZK STARK privacy preserving identity verification.
-Hashing Algorithm: KECCAK 256 to verify the integrity of data and validate proofs.
+5. Security \& Validation\\
+Mechanisms: Gradient sketching (Random Projection), DAVS committee selection, PBFT-inspired consensus, hashing for model provenance.
 
 6. Development Deployment Tools\\
 Version Control: Git with GitHub integration.
@@ -142,7 +126,7 @@ IDE or Text Editors: Visual Studio Code or any development environment of choice
 \section{Project Estimation}
 
 \subsection{COCOMO Estimation Model}
-In order to determine the development effort of TrustChain, the Basic COCOMO Model is used under Semi Detached category since the project contains moderate complexity with the integration of blockchain, cryptographic operations and a team with mixed levels.
+In order to determine the development effort of DAVS, the Basic COCOMO Model is used under Semi Detached category since the project has moderate complexity with the integration of ML training, consensus validation, and blockchain-based logging.
 \\
 \\
 Estimated Size: 14,000 lines of code (14 KLOC)\\
@@ -168,7 +152,7 @@ Team Size                & \textasciitilde6 members \\
 
 
 \subsection{Function Point Analysis}
-Function Point Analysis (FPA) estimates the size and effort of TrustChain by evaluating its functional components such as user inputs, outputs, storage and blockchain interactions. The method does not depend on the programming language and is oriented towards the functionality of the system.
+Function Point Analysis (FPA) estimates the size and effort of DAVS by evaluating functional components such as client training, sketch generation, committee selection, consensus validation, audit logging, and metric reporting. The method does not depend on the programming language and is oriented towards system functionality.
 
 1. Component Breakdown
 
@@ -178,11 +162,11 @@ Function Point Analysis (FPA) estimates the size and effort of TrustChain by eva
 \hline
 \textbf{Component}                                   & \textbf{Count} & \textbf{Complexity} & \textbf{Weight} & \textbf{Total FP} \\
 \hline
-External Inputs (registration, upload, access)              & 6     & Medium     & 4      & 24       \\
-External Outputs (verification result, proof)          & 4     & Medium     & 5      & 20       \\
-User Inquiries (status check, access logs)             & 3     & Simple     & 3      & 9       \\
-Internal Logical Files (user data, hashes) & 4     & Medium     & 7      & 28       \\
-External Interface Files (IPFS, APIs)             & 3     & Medium     & 7      & 21       \\
+External Inputs (client join, config, round control)              & 6     & Medium     & 4      & 24       \\
+External Outputs (metrics, model hash, audit records)          & 4     & Medium     & 5      & 20       \\
+User Inquiries (round status, committee logs)             & 3     & Simple     & 3      & 9       \\
+Internal Logical Files (model states, logs, scores) & 4     & Medium     & 7      & 28       \\
+External Interface Files (datasets, client nodes)             & 3     & Medium     & 7      & 21       \\
 \hline
 \textbf{Unadjusted Function Points}              &       &            &        & \textbf{102}  \\
 \hline
@@ -192,7 +176,7 @@ External Interface Files (IPFS, APIs)             & 3     & Medium     & 7      
 \end{table}
 
 2. Complexity Adjustment
-Based on the system features like security, distributed processing, cryptographic computation and integration complexity, a Complexity Adjustment Factor (CAF) of 1.08 is used.
+Based on the system features like distributed training, robustness validation, consensus, and audit integration, a Complexity Adjustment Factor (CAF) of 1.08 is used.
 \\
 Adjusted Function Points (AFP): $AFP = 102 \times 1.08 \approx 110$\\
 
